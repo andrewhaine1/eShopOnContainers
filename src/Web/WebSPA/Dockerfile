@@ -66,5 +66,7 @@ FROM build AS publish
 
 FROM base AS final
 WORKDIR /app
+RUN apt-get update -yq && apt-get upgrade -yq && apt-get install -yq curl git nano
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && apt-get install -yq nodejs build-essential
 COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "WebSPA.dll"]

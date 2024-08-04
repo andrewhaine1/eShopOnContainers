@@ -137,7 +137,8 @@ public class Startup
 
     private void RegisterAppInsights(IServiceCollection services)
     {
+	Console.WriteLine("============================== TESTING ================================");
         services.AddApplicationInsightsTelemetry(Configuration);
-        services.AddApplicationInsightsKubernetesEnricher();
+	//services.AddApplicationInsightsKubernetesEnricher();
     }
 }

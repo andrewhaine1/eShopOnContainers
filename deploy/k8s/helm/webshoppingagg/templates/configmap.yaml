@@ -26,4 +26,5 @@ data:
   internalurls__grpcBasket: "http://{{ .Values.app.svc.basket }}:{{ .Values.service.grpcPort }}"
   internalurls__grpcCatalog: "http://{{ .Values.app.svc.catalog }}:{{ .Values.service.grpcPort }}"
   internalurls__grpcOrdering: "http://{{ .Values.app.svc.ordering }}:{{ .Values.service.grpcPort }}"
-  urls__IdentityUrlExternal: {{ $protocol }}://{{ $identity }}
+    #urls__IdentityUrlExternal: {{ $protocol }}://{{ $identity }}
+  urls__IdentityUrlExternal: "http://identity-api"

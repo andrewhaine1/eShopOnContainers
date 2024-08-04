@@ -15,7 +15,7 @@ metadata:
 {{ toYaml . | indent 4 }}
 {{- end }}
 {{- if and .Values.inf.tls.enabled .Values.inf.tls.issuer }}
-    cert-manager.io/issuer: {{ .Values.inf.tls.issuer }} 
+    cert-manager.io/cluster-issuer: {{ .Values.inf.tls.issuer }} 
 {{- end }}
 {{- if .Values.inf.mesh.enabled }} 
 {{- with .Values.ingress.mesh.annotations }}
@@ -23,27 +23,26 @@ metadata:
 {{- end }}
 {{- end }}
 spec:
+  ingressClassName: nginx
 {{- if .Values.ingress.tls }}
   tls:
-  {{- range .Values.ingress.tls }}
-    - hosts:
-      {{- range .hosts }}
-        - {{ . }}
-      {{- end }}
-      secretName: {{ .secretName }}
-  {{- end }}
+  - hosts:
+    {{- range .Values.ingressHosts }}
+      - {{ . }}
+    {{- end }}
+    secretName: eshop-apigwws-tls-secret
 {{- end }}
   rules:
-    {{- range .Values.ingress.hosts }}
+  {{- range .Values.ingressHosts }}
     - host: {{ . }}
       http:
         paths:
-          - path: {{ $ingressPath }}(/|$)(.*)
-            pathType: Prefix
-            backend:
-              service:
-                name: {{ $serviceName }}
-                port:
-                  number: 80
+        - path: {{ $ingressPath }}
+          pathType: Prefix
+          backend:
+            service:
+              name: {{ $serviceName }}
+              port:
+                number: 80
   {{- end }}
 {{- end }}

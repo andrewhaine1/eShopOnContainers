@@ -4,7 +4,7 @@ pathBase: /
 
 image:
   repository: eshop/webspa
-  tag: latest
+  tag: linux-latest
   pullPolicy: IfNotPresent
 
 service:
@@ -13,8 +13,31 @@ service:
 
 ingress:
   enabled: true
-  annotations: {}
-  tls: []
+  annotations:
+    #kubernetes.io/ingress.class: "nginx"
+    #nginx.ingress.kubernetes.io/rewrite-target: /$2
+    #nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    #nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    # Set allowed upload size to 10GB, which is way too big
+    #nginx.ingress.kubernetes.io/proxy-body-size: "10000000000"
+    #nginx.ingress.kubernetes.io/proxy-connect-timeout: "180"
+    #nginx.ingress.kubernetes.io/proxy-read-timeout: "180"
+    #nginx.ingress.kubernetes.io/proxy-send-timeout: "180"
+    #ngressclass.kubernetes.io/is-default-class: "true"
+  tls: 
+    hosts:
+      - "eshop.kubeapps.co.za"
+    secretName: eshop-webspa-tls-secret
+
+ingressHosts:
+    #- host: eshop.kubeapps.co.za
+    #  paths:
+    #  - path: "/"
+  - "eshop.kubeapps.co.za"
 
 resources: {}
 
@@ -47,7 +70,7 @@ env:
       # values define environment variables with a fixed value (no configmap involved) (name is name of var, and value is its value)
   values:
     - name: ASPNETCORE_ENVIRONMENT
-      value: Development
+      value: Production
     - name: ASPNETCORE_URLS
       value: http://0.0.0.0:80
     - name: OrchestratorType
