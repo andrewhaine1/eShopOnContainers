@@ -8,11 +8,11 @@ app:                                                    # app global settings
       basket: basket-api                                # ingress entry for basket api
       catalog: catalog-api                              # ingress entry for catalog api
       ordering: ordering-api                            # ingress entry for ordering api
-      identity: identity-api                            # ingress entry for identity api
+      identity: eshop-identity.kubeapps.co.za           # ingress entry for identity api
       mvc: webmvc                                       # ingress entry for web mvc
-      spa: ""                                           # ingress entry for web spa
+      spa: eshop.kubeapps.co.za                         # ingress entry for web spa
       status: webstatus                                 # ingress entry for web status
-      webshoppingapigw: apigwws.kubeapps.co.za                # ingress entry for web shopping Agw
+      webshoppingapigw: apigwws.kubeapps.co.za          # ingress entry for web shopping Agw
       mobileshoppingapigw: mobileshoppingapigw          # ingress entry for mobile shopping Agw
       webshoppingagg: apigwws.kubeapps.co.za            # ingress entry for web shopping aggregator
       mobileshoppingagg: mobileshoppingagg              # ingress entry for mobile shopping aggregator

@@ -1,6 +1,6 @@
 replicaCount: 1
 clusterName: eshop-aks
-pathBase: /identity
+pathBase: /
 
 image:
   repository: eshop/identity.api
@@ -13,10 +13,19 @@ service:
 
 ingress:
   enabled: true
-  annotations: {}
-  hosts:
-    - chart-example.local
-  tls: []
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+  tls:
+    hosts:
+      - "eshop-identity.kubeapps.co.za"
+    secretName: eshop-identity-tls-secret
+
+ingressHosts:
+  - "eshop-identity.kubeapps.co.za"
 
 resources: {}
 

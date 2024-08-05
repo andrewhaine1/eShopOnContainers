@@ -24,7 +24,7 @@ data:
   identity__keystore: {{ .Values.inf.redis.keystore.constr }}
   all__InstrumentationKey: "{{ .Values.inf.appinsights.key }}"
   mvc_e: http://{{ $mvc_url }}
-  spa_e: http://{{ $spa_url }}
+  spa_e: https:/{{ $spa_url }}
   basket_e: http://{{ $basket_url }}
   ordering_e: http://{{ $ordering_url }}
   mobileshoppingagg_e: http://{{ $mobileshoppingagg }}
