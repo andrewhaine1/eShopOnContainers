@@ -7,7 +7,7 @@ spec:
   project: eshop-on-containers
   source:
     chart: webspa
-    repoURL: https://github.com/andrewhaine1/eShopOnContainers
+    repoURL: kubeclusteracr.azurecr.io/helm/webspa
     targetRevision: 0.1.0
     helm:
       releaseName: eshop-webspa
