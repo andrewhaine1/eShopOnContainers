@@ -4,7 +4,7 @@ metadata:
   name: eshop-webspa
   namespace: eshop
 spec:
-  project: eshop-on-containers
+  project: default
   source:
     chart: webspa
     repoURL: kubeclusteracr.azurecr.io/helm/webspa
