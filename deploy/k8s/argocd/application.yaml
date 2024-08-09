@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: eshop-webspa
+  namespace: eshop
+spec:
+  project: eshop-on-containers
+  source:
+    chart: webspa
+    repoURL: https://github.com/andrewhaine1/eShopOnContainers
+    targetRevision: 0.1.0
+    helm:
+      releaseName: eshop-webspa
+  destination:
+    server: "https://10.0.2.4:6443"
+    namespace: eshop
