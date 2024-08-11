@@ -7,14 +7,15 @@ spec:
   project: default
   source:
     chart: keystore-data
+    path: deploy/k8s/helm
     repoURL: https://github.com/andrewhaine1/eShopOnContainers
     targetRevision: HEAD
     helm:
       releaseName: eshop-keystore-data
       valueFiles:
-      - ../../app.yaml
-      - ../../inf.yaml
-      - ../../ingress_values.yaml
+      - app.yaml
+      - inf.yaml
+      - ingress_values.yaml
   destination:
     server: kubeapps-abm-cluster
     namespace: eshop
