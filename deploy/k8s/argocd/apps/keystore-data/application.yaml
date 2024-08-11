@@ -17,5 +17,5 @@ spec:
       - deploy/k8s/helm/inf.yaml
       - deploy/k8s/helm/ingress_values.yaml
   destination:
-    server: kubeapps-abm-cluster
+    server: in-cluster
     namespace: eshop
