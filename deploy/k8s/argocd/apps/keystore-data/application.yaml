@@ -12,9 +12,9 @@ spec:
     helm:
       releaseName: keystore-data
       valueFiles:
-      - app.yaml
-      - inf.yaml
-      - ingress_values.yaml
+      - ../app.yaml
+      - ../inf.yaml
+      - ../ingress_values.yaml
   destination:
     server: kubeapps-abm-cluster
     namespace: eshop
