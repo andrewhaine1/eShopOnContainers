@@ -8,7 +8,7 @@ spec:
   source:
     path: deploy/k8s/helm/keystore-data
     repoURL: https://github.com/andrewhaine1/eShopOnContainers
-    targetRevision: dev
+    targetRevision: HEAD
     directory:
       recurse: true
     helm:
