@@ -12,7 +12,6 @@ spec:
     directory:
       recurse: true
     helm:
-      releaseName: keystore-data
       valueFiles:
       - deploy/k8s/helm/app.yaml
       - deploy/k8s/helm/inf.yaml
