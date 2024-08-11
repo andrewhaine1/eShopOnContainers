@@ -10,7 +10,7 @@ spec:
     repoURL: https://github.com/andrewhaine1/eShopOnContainers
     targetRevision: HEAD
     helm:
-      releaseName: eshop-keystore-data
+      releaseName: keystore-data
       valueFiles:
       - app.yaml
       - inf.yaml
