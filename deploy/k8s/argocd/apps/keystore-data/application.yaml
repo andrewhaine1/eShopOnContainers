@@ -6,8 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    chart: keystore-data
-    path: deploy/k8s/helm
+    path: deploy/k8s/helm/keystore-data
     repoURL: https://github.com/andrewhaine1/eShopOnContainers
     targetRevision: HEAD
     helm:
