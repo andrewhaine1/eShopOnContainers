@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: eshop-keystore-data
+  namespace: eshop
+spec:
+  project: default
+  source:
+    chart: keystore-data
+    repoURL: https://github.com/andrewhaine1/eShopOnContainers
+    targetRevision: HEAD
+    helm:
+      releaseName: eshop-keystore-data
+      valueFiles:
+      - ../../app.yaml
+      - ../../inf.yaml
+      - ../../ingress_values.yaml
+  destination:
+    server: kubeapps-abm-cluster
+    namespace: eshop

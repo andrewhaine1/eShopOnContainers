@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: eShopOnContainers
+  name: eshop-webspa
   namespace: eshop
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: default
+    namespace: eshop
     name: kubeapps-abm-cluster
   project: default
   source:
-    path: deploy/k8s/argocd
+    path: webspa
     repoURL: https://github.com/andrewhaine1/eShopOnContainers
     targetRevision: HEAD
