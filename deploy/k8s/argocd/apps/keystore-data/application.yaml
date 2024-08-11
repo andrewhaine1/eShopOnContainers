@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     path: deploy/k8s/helm/keystore-data
-    repoURL: https://github.com/andrewhaine1/eShopOnContainers
+    repoURL: https://github.com/andrewhaine1/eShopOnContainers.git
     targetRevision: HEAD
     directory:
       recurse: true
