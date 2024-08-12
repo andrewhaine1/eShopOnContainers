@@ -13,10 +13,19 @@ service:
 
 ingress:
   enabled: true
-  annotations: {}
-  hosts:
-    - chart-example.local
-  tls: []
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+  tls:
+    hosts:
+      - "eshop-webstatus.kubeapps.co.za"
+    secretName: eshop-webstatus-tls-secret
+
+ingressHosts:
+  - "eshop-webstatus.kubeapps.co.za"
 
 resources: {}
 
