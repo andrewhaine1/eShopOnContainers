@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: eshop-rabbitmq
+  namespace: argocd
+spec:
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+  source:
+    path: deploy/k8s/helm/rabbitmq
+    repoURL: https://github.com/andrewhaine1/eShopOnContainers
+    targetRevision: HEAD
+    helm:
+      releaseName: rabbitmq
+      valueFiles:
+      - ../app.yaml
+      - ../inf.yaml
+      - ../ingress_values.yaml
+  destination:
+    server: https://10.0.2.4:6443
+    namespace: eshop

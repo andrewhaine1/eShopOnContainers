@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: eshop-webhooks-web
+  namespace: argocd
+spec:
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+  source:
+    path: deploy/k8s/helm/webhooks-web
+    repoURL: https://github.com/andrewhaine1/eShopOnContainers
+    targetRevision: HEAD
+    helm:
+      releaseName: eshop-webhooks-web
+      valueFiles:
+        - ../app.yaml
+        - ../inf.yaml
+        - ../ingress_values.yaml
+      valuesObject:
+        app:
+          name: eshop
+        inf:
+          registry:
+            server: kubeclusteracr.azurecr.io
+            secretName: acr-secret
+        image:
+          tag: linux-latest
+          pullPolicy: Always
+  destination:
+    server: https://10.0.2.4:6443
+    namespace: eshop

@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: eshop-keystore-data
-  namespace: eshop
+  namespace: argocd
 spec:
   project: default
   source:
@@ -17,5 +17,5 @@ spec:
       - deploy/k8s/helm/inf.yaml
       - deploy/k8s/helm/ingress_values.yaml
   destination:
-    server: kubeapps-abm-cluster
+    server: https://10.0.2.4:6443
     namespace: eshop
