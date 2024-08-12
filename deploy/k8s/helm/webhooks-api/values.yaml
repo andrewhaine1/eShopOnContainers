@@ -21,11 +21,11 @@ ingress:
     nginx.ingress.kubernetes.io/use-regex: "true"
   tls:
     hosts:
-      - "eshop-webstatus.kubeapps.co.za"
-    secretName: eshop-webstatus-tls-secret
+      - "eshop-webhooks-api.kubeapps.co.za"
+    secretName: eshop-webhooksapi-tls-secret
 
 ingressHosts:
-  - "eshop-webstatus.kubeapps.co.za"
+  - "eshop-webhooks-api.kubeapps.co.za"
 
 resources: {}
 
