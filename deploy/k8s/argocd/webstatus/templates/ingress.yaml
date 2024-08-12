@@ -25,18 +25,17 @@ metadata:
 {{- end }}
 {{- end }}
 spec:
+  ingressClassName: nginx
 {{- if .Values.ingress.tls }}
   tls:
-  {{- range .Values.ingress.tls }}
-    - hosts:
-      {{- range .hosts }}
-        - {{ . }}
-      {{- end }}
-      secretName: {{ .secretName }}
-  {{- end }}
+  - hosts:
+    {{- range .Values.ingressHosts }}
+      - {{ . }}
+    {{- end }}
+    secretName: eshop-webstatus-tls-secret
 {{- end }}
   rules:
-  {{- range .Values.ingress.hosts }}
+    {{- range .Values.ingressHosts }}
     - host: {{ . }}
       http:
         paths:
@@ -46,6 +45,6 @@ spec:
               service:
                 name: {{ $serviceName }}
                 port:
-                  number: 80        
+                  number: 80    
   {{- end }}
 {{- end }}
