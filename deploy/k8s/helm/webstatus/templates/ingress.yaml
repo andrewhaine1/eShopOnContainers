@@ -32,7 +32,7 @@ spec:
     {{- range .Values.ingressHosts }}
       - {{ . }}
     {{- end }}
-    secretName: eshop-identity-tls-secret
+    secretName: eshop-webstatus-tls-secret
 {{- end }}
   rules:
     {{- range .Values.ingressHosts }}
