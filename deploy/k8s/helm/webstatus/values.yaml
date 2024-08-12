@@ -13,10 +13,21 @@ service:
 
 ingress:
   enabled: true
-  annotations: {
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    #nginx.ingress.kubernetes.io/proxy-buffers-number: "4"
+    #nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"
+  tls:
+    hosts:
+      - "eshop-webstatus.kubeapps.co.za"
+    secretName: eshop-webstatus-tls-secret
 
-  }
-  tls: []
+ingressHosts:
+  - "eshop-webstatus.kubeapps.co.za"
 
 resources: {}
 
