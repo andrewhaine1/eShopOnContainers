@@ -23,7 +23,7 @@ metadata:
 {{- end }}
 {{- end }}
 spec:
- ingressClassName: nginx
+  ingressClassName: nginx
 {{- if .Values.ingress.tls }}
   tls:
   - hosts:
