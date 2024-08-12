@@ -1,6 +1,6 @@
 replicaCount: 1
 clusterName: eshop-aks
-pathBase: /webstatus
+pathBase: /
 
 image:
   repository: eshop/webstatus
