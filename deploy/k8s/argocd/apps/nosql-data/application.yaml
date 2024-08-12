@@ -1,16 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: eshop-keystore-data
+  name: eshop-nosql-data
   namespace: argocd
 spec:
   project: default
+  syncPolicy:
+    automated:
+      prune: true
   source:
-    path: deploy/k8s/helm/keystore-data
+    path: deploy/k8s/helm/nosql-data
     repoURL: https://github.com/andrewhaine1/eShopOnContainers
     targetRevision: HEAD
     helm:
-      releaseName: keystore-data
+      releaseName: nosql-data
       valueFiles:
       - ../app.yaml
       - ../inf.yaml

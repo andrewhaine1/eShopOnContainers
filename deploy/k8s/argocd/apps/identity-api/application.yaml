@@ -1,0 +1,51 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: eshop-identity-api
+  namespace: argocd
+spec:
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+  source:
+    path: deploy/k8s/helm/identity-api
+    repoURL: https://github.com/andrewhaine1/eShopOnContainers
+    targetRevision: HEAD
+    helm:
+      releaseName: eshop-identity-api
+      valueFiles:
+        - ../app.yaml
+        - ../inf.yaml
+        - ../ingress_values.yaml
+      valuesObject:
+        inf:
+          registry:
+            server: kubeclusteracr.azurecr.io
+            secretName: acr-secret
+        image:
+          tag: linux-latest
+          pullPolicy: Always
+          #      valuesObject:
+          #        app:
+          #          name: eshop
+          #        inf:
+          #          k8s:
+          #            dns: ""
+          #          registry:
+          #            server: kubeclusteracr.azurecr.io
+          #            secretName: acr-secret
+          #        image:
+          #          tag: linux-latest
+          #          pullPolicy: Always
+          #        ingress:
+          #          enabled:
+          #            true
+          #          tls:
+          #            hosts:
+          #              - "eshop.kubeapps.co.za"
+          #            secretName: eshop-webspa-tls-secret
+        
+  destination:
+    server: https://10.0.2.4:6443
+    namespace: eshop
