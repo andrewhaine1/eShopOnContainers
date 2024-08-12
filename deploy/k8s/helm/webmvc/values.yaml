@@ -1,6 +1,6 @@
 replicaCount: 1
 clusterName: eshop-aks
-pathBase: /webmvc
+pathBase: /
 
 image:
   repository: eshop/webmvc
@@ -19,8 +19,6 @@ ingress:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.ingress.kubernetes.io/proxy-buffers-number: "4"
-    nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"
   tls:
     hosts:
       - "eshop-webmvc.kubeapps.co.za"
