@@ -34,8 +34,6 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ template "fqdn-image" . }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-        imagePullSecrets:
-          - name: acr-secret
           env:
             - name: PATH_BASE
               value: {{ include "pathBase" . }}
