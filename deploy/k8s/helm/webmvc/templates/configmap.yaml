@@ -21,4 +21,4 @@ data:
   internalurls__identity__hc: http://{{ .Values.app.svc.identity }}/hc
   urls__apigwws: {{ $protocol }}://{{ $webshoppingapigw }}
   urls__mvc: {{ $protocol }}://{{ $mvc }}
-  urls__IdentityUrl: {{ $protocol }}://{{ $identity }}
+  urls__IdentityUrl: {{ $protocol }}:/{{ $identity }}
