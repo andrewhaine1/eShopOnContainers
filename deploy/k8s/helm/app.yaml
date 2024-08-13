@@ -9,7 +9,7 @@ app:                                                    # app global settings
       catalog: catalog-api                              # ingress entry for catalog api
       ordering: ordering-api                            # ingress entry for ordering api
       identity: eshop-identity.kubeapps.co.za           # ingress entry for identity api
-      mvc: webmvc                                       # ingress entry for web mvc
+      mvc: eshop-webmvc.kubeapps.co.za                  # ingress entry for web mvc
       spa: eshop.kubeapps.co.za                         # ingress entry for web spa
       status: webstatus                                 # ingress entry for web status
       webshoppingapigw: apigwws.kubeapps.co.za          # ingress entry for web shopping Agw
