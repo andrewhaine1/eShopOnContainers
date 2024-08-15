@@ -31,7 +31,7 @@ spec:
     {{- range .Values.ingressHosts }}
       - {{ . }}
     {{- end }}
-    secretName: eshop-webstatus-tls-secret
+    secretName: eshop-webhooksweb-tls-secret
 {{- end }}
   rules:
     {{- range .Values.ingressHosts }}
